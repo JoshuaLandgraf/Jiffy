@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "Jiffy",
+  "description": "Updates links to HTML5 GIFs when available",
+  "version": "1.0",
+
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["Jiffy.js"]
+  }],
+
+  "permissions": ["activeTab"],
+
+  "icons": { "256" : "Jiffy_icon.png" }
+}

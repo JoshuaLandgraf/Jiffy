@@ -23,12 +23,16 @@ function GIFtoGIFV(source) {
 		request.onreadystatechange = function() {
 			if(request.readyState == 4 && request.status == 200) {
 				element.href = element.href + "v";
-				console.log("updated \"" + element.innerHTML + "\" to link to " + element.href);
+				//console.log("updated \"" + element.innerHTML + "\" to link to " + element.href);
 			} else if (request.readyState == 4 && request.status != 200) {
-				console.log(element.href + "v is not a valid URL, not updating link");
+				//console.log(element.href + "v is not a valid URL, not updating link");
 			}
 		}
-		request.open("GET", element.href + "v", true);
+		var link = element.href + "v";
+		if (window.location.protocol == "https:" && link.substr(0,5) == "http:") {
+			link = "https:" + link.substr(5);
+		}
+		request.open("GET", link, true);
 		request.send();
 	});
 }
